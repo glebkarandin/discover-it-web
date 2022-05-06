@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import {initializeApp} from 'firebase/app';
 import './App.css';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB2tlU2Z0IhAZfWk98ocQHhrNRweswlShU",
+    authDomain: "discoverit-b9578.firebaseapp.com",
+    projectId: "discoverit-b9578",
+    storageBucket: "discoverit-b9578.appspot.com",
+    messagingSenderId: "833947976976",
+    appId: "1:833947976976:web:01d6fca46aa063ad1c1195"
+};
+
+const fireBaseApp = initializeApp(firebaseConfig);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header">Discover it! sss</header>
     </div>
   );
 }
