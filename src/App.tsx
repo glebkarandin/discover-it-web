@@ -2,7 +2,7 @@ import React from 'react';
 import {Routes, Route, Link} from 'react-router-dom';
 import './App.css';
 
-import QuestList from "./components/Quest/QuestList";
+import QuestList from "./components/QuestList/QuestList";
 import QuestCreate from "./components/Quest/QuestCreate";
 
 function App() {
