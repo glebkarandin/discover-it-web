@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import {getQuests} from "../services/firebase";
-import {QuestList} from "../types/quest.type";
-import QuestView from "./Quest/QuestView";
+import {getQuests} from "../../services/firebase";
+import {QuestList as QuestListType} from "../../types/quest.type";
+import QuestView from "./QuestView";
 
-export default function QuestsList() {
-  const [questsList, setQuests] = useState<QuestList  | null>(null);
+export default function QuestList() {
+  const [questsList, setQuests] = useState<QuestListType | null>(null);
   useEffect(() => {
     getQuests(setQuests);
   }, []);

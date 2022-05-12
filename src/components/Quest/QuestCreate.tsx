@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {IQuestBase} from "../../types/quest.type";
 import {addQuest} from "../../services/firebase";
 
-export default function QuestForm() {
+export default function QuestCreate() {
   const [quest, setQuest] = useState<IQuestBase>({
     title: '',
     description: ''
