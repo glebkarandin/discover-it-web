@@ -1,22 +1,26 @@
 import React from 'react';
-import {initializeApp} from 'firebase/app';
+import {Routes, Route, Link} from 'react-router-dom';
 import './App.css';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyB2tlU2Z0IhAZfWk98ocQHhrNRweswlShU",
-    authDomain: "discoverit-b9578.firebaseapp.com",
-    projectId: "discoverit-b9578",
-    storageBucket: "discoverit-b9578.appspot.com",
-    messagingSenderId: "833947976976",
-    appId: "1:833947976976:web:01d6fca46aa063ad1c1195"
-};
-
-const fireBaseApp = initializeApp(firebaseConfig);
+import QuestsList from "./components/quests-list";
+import QuestForm from "./components/Quest/QuestForm";
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">Discover it! sss</header>
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/quests-list">Quest List</Link></li>
+          <li><Link to="/create-quest">Create Quest</Link></li>
+        </ul>
+      </div>
+      <Routes>
+        <Route path="/quests-list" element={<QuestsList />} />
+        <Route path="/create-quest" element={<QuestForm />} />
+      </Routes>
     </div>
   );
 }
