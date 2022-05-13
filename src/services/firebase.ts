@@ -6,7 +6,7 @@ import {IQuest, IQuestBase, QuestList} from "../types/quest.type";
 const fireBaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(fireBaseApp);
 
-export async function getQuests(setQuests: (value: (((prevState: (QuestList | null)) => (QuestList | null)) | QuestList | null)) => void) {
+export async function getQuests() {
   const questCol = collection(db, 'quests');
   const questsSnapshot = await getDocs(questCol);
   const questList: QuestList = questsSnapshot.docs.map((doc) => {
@@ -18,9 +18,8 @@ export async function getQuests(setQuests: (value: (((prevState: (QuestList | nu
     }
     return quest;
   });
-  setQuests(questList);
 
-  // return questsSnapshot;
+  return questList;
 }
 
 export async function addQuest(quest: IQuestBase) {

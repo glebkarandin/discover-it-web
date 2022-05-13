@@ -1,23 +1,20 @@
-import {useEffect, useState} from "react";
-import {getQuests} from "../../services/firebase";
-import {QuestList as QuestListType} from "../../types/quest.type";
+import {useEffect} from "react";
 import QuestView from "../Quest/QuestView";
+import {fetchQuests, selectListItems} from "./slice";
+import {useAppSelector, useAppDispatch} from "../../redux/hooks";
 
 export default function QuestList() {
-  const [questsList, setQuests] = useState<QuestListType | null>(null);
+  const questList = useAppSelector(selectListItems);
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    getQuests(setQuests);
+    dispatch(fetchQuests());
   }, []);
-  // getQuests(setQuests);
-  // getQuests().then((value => {
-  //   console.log('value : ', value)
-  // }))
   return (
     <div>
       <>
       <div>Quests List</div>
       {
-        questsList && questsList.map((quest) => <QuestView quest={quest} />)
+        !!questList.length && questList.map((quest) => <QuestView quest={quest} />)
       }
       </>
     </div>
