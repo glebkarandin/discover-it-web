@@ -11,10 +11,12 @@ export async function getQuests() {
   const questsSnapshot = await getDocs(questCol);
   const questList: QuestList = questsSnapshot.docs.map((doc) => {
     const el = doc.data();
+    const qRef = collection(doc.ref, 'questions')
     const quest: IQuest = {
-      id: el.id,
+      id: doc.id,
       title: el.title,
-      description: el.description
+      description: el.description,
+      questionsRef: qRef.path
     }
     return quest;
   });

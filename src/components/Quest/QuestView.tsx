@@ -6,6 +6,7 @@ export default function QuestView({quest}: {quest: IQuest}) {
       <div>{quest.id}</div>
       <div>{quest.title}</div>
       <div>{quest.description}</div>
+      <div>{quest.questionsRef}</div>
     </div>
   )
 }

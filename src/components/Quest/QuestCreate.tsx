@@ -6,7 +6,8 @@ import {addQuest} from "../../services/firebase";
 export default function QuestCreate() {
   const [quest, setQuest] = useState<IQuestBase>({
     title: '',
-    description: ''
+    description: '',
+    questionsRef: ''
   });
   const handleChange = (param: any): void => {
     const {currentTarget: {value, id}} = param;
