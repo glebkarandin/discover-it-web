@@ -1,10 +1,12 @@
 import {configureStore } from '@reduxjs/toolkit';
 
 import questListReducer from "../components/QuestList/slice";
+import questReducer from "../components/Quest/slice"
 
 const store = configureStore ({
   reducer: {
-    questList: questListReducer
+    questList: questListReducer,
+    quest: questReducer,
   }
 });
 

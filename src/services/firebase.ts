@@ -1,7 +1,7 @@
 import {initializeApp} from 'firebase/app';
 import {addDoc, collection, getDocs, getFirestore} from 'firebase/firestore/lite';
 import firebaseConfig from './firebaseConfig';
-import {IQuest, IQuestBase, QuestList} from "../types/quest.type";
+import {IQuest, IQuestBase, IQuestion, QuestList} from "../types/quest.type";
 
 const fireBaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(fireBaseApp);
@@ -26,5 +26,14 @@ export async function getQuests() {
 
 export async function addQuest(quest: IQuestBase) {
   const questCol = collection(db, 'quests');
-  return await addDoc(questCol, quest);
+  const documentReference = await addDoc(questCol, quest);
+  return documentReference.path;
+}
+
+export async function addQuestion(question: IQuestion, questRef: string) {
+  const questionsCol = collection(db, `${questRef}/questions`);
+  console.log('question col : ', questionsCol)
+  const documentReference = await addDoc(questionsCol, question)
+  console.log('document ref : ', documentReference.path)
+  return documentReference.path;
 }

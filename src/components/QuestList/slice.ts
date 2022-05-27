@@ -3,11 +3,11 @@ import {QuestList} from "../../types/quest.type";
 import {RootState} from "../../redux/store";
 import {getQuests} from "../../services/firebase";
 
-interface State {
+interface IState {
   items: QuestList
 }
 
-const initialState: State = {
+const initialState: IState = {
   items: []
 }
 

@@ -14,7 +14,7 @@ export default function QuestList() {
       <>
       <div>Quests List</div>
       {
-        !!questList.length && questList.map((quest) => <QuestView quest={quest} />)
+        !!questList.length && questList.map((quest) => <QuestView quest={quest} key={quest.id} />)
       }
       </>
     </div>

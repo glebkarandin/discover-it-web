@@ -12,7 +12,7 @@ export interface IQuestion {
   questionImage?: string
   answerText?: string
   answerImage?: string
-  coords: string
+  coords?: string
 }
 
 export type QuestList = Array<IQuest>;
