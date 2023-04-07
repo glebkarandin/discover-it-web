@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  dit-frontend:
+    container_name: dit-frontend
+    build:
+      context: ./dit-frontend
+      dockerfile: dev.Dockerfile
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    volumes:
+      - ./dit-frontend/src:/app/src
+      - ./dit-frontend/public:/app/public
+    restart: always
+    ports:
+      - '3000:3000'
+    expose:
+      - '3000'
