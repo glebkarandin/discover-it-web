@@ -6,9 +6,9 @@ services:
     build:
       context: ./dit-frontend
       dockerfile: dev.Dockerfile
-    environment:
-      ENV_VARIABLE: ${ENV_VARIABLE}
-      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+#    environment:
+#      ENV_VARIABLE: ${ENV_VARIABLE}
+#      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
     volumes:
       - ./dit-frontend/src:/app/src
       - ./dit-frontend/public:/app/public
@@ -17,3 +17,26 @@ services:
       - '3000:3000'
     expose:
       - '3000'
+  dit-postgres:
+    container_name: dit-postgres
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+  dit-backend:
+    container_name: dit-backend
+    build:
+      context: ./dit-backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./dit-backend/src:/app/src
+    restart: always
+    ports:
+      - '5000:5000'
+    expose:
+      - '5000'
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8888:8888'
