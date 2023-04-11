@@ -19,10 +19,14 @@ services:
       - '3000'
   dit-postgres:
     container_name: dit-postgres
-    image: postgres:alpine
+    image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: "ditDB"
+      POSTGRES_USER: "glebka"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - '5432:5432'
   dit-backend:
     container_name: dit-backend
     build:
@@ -30,6 +34,8 @@ services:
       dockerfile: dev.Dockerfile
     volumes:
       - ./dit-backend/src:/app/src
+    depends_on:
+      - dit-postgres
     restart: always
     ports:
       - '5000:5000'
@@ -39,4 +45,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - '8888:8888'
+      - '8080:8080'
